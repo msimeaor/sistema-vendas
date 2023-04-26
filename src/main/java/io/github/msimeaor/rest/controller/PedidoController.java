@@ -7,6 +7,7 @@ import io.github.msimeaor.domain.entily.ItemPedido;
 import io.github.msimeaor.domain.entily.Pedido;
 import io.github.msimeaor.domain.service.impl.PedidoServiceImpl;
 import io.github.msimeaor.exceptions.ExceptionPersonalizada;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class PedidoController {
   private final PedidoServiceImpl pedidoServiceImpl;
 
   @PostMapping
-  public UUID save(@RequestBody PedidoDto pedidoDto) {
+  public UUID save(@RequestBody @Valid PedidoDto pedidoDto) {
     Pedido pedido = pedidoServiceImpl.save(pedidoDto);
     return pedido.getId();
   }
