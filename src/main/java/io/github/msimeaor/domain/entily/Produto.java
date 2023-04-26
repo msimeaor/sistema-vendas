@@ -1,6 +1,9 @@
 package io.github.msimeaor.domain.entily;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +22,12 @@ public class Produto {
     private UUID id;
 
     @Column(nullable = false, name = "DESCRICAO", length = 100)
+    @NotEmpty(message = "O campo descrição é obrigatório!")
     private String descricao;
 
     @Column(nullable = false, name = "PRECO",  precision = 20, scale = 2)
+    @NotNull(message = "O campo preço é obrigatório!")
+    @Digits(integer = 20, fraction = 2)
     private BigDecimal preco;
 
     public Produto() {
