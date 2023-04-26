@@ -1,6 +1,7 @@
 package io.github.msimeaor.domain.entily;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,13 +20,16 @@ public class ItemPedido {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PEDIDO")
+    @NotNull(message = "O campo pedido é obrigatório!")
     private Pedido pedido;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PRODUTO")
+    @NotNull(message = "O campo produto é obrigatório!")
     private Produto produto;
 
     @Column(nullable = false, name = "QUANTIDADE")
+    @NotNull(message = "O campo quantidade é obrigatório")
     private Integer quantidade;
 
 }

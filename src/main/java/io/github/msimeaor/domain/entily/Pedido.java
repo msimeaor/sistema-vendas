@@ -2,6 +2,10 @@ package io.github.msimeaor.domain.entily;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,12 +28,17 @@ public class Pedido {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CLIENTE")
+    @NotNull(message = "O campo cliente é obrigatório!")
     private Cliente cliente;
 
     @Column(nullable = false, name = "DATA_PEDIDO")
+    @NotNull(message = "O campo de data precisa ser preenchido!")
+    @FutureOrPresent(message = "A data inserida precisa ser a data atual")
     private LocalDate data_pedido;
 
     @Column(nullable = false, name = "TOTAL", precision = 20, scale = 2)
+    @NotNull(message = "O valor total precisa ser preenchido!")
+    @Digits(integer = 20, fraction = 2)
     private BigDecimal total;
 
     @OneToMany(mappedBy = "pedido")
