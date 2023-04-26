@@ -2,8 +2,10 @@ package io.github.msimeaor.domain.entily;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.Set;
 import java.util.UUID;
@@ -20,9 +22,12 @@ public class Cliente {
     private UUID id;
 
     @Column(nullable = false, name = "NOME", length = 50)
+    @NotEmpty(message = "O campo nome é obrigatório!")
     private String nome;
 
-    @Column(nullable = false, unique = true, name = "CPF", length = 11)
+    @Column(nullable = false, unique = true, name = "CPF", length = 14)
+    @NotEmpty(message = "O campo CPF é obrigatório!")
+    @CPF(message = "Informe um CPF válido!")
     private String cpf;
 
     @JsonIgnore
