@@ -20,16 +20,16 @@ public class ItemPedido {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PEDIDO")
-    @NotNull(message = "O campo pedido é obrigatório!")
+    @NotNull(message = "{campo.codigo-pedido.obrigatorio}")
     private Pedido pedido;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PRODUTO")
-    @NotNull(message = "O campo produto é obrigatório!")
+    @NotNull(message = "{campo.codigo-produto.obrigatorio}")
     private Produto produto;
 
     @Column(nullable = false, name = "QUANTIDADE")
-    @NotNull(message = "O campo quantidade é obrigatório")
+    @NotNull(message = "{campo.quantidade-itens.obrigatorio}")
     private Integer quantidade;
 
 }

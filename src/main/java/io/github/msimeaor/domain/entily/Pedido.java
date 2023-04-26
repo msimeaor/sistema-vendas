@@ -28,21 +28,21 @@ public class Pedido {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CLIENTE")
-    @NotNull(message = "O campo cliente é obrigatório!")
+    @NotNull(message = "{campo.codigo-cliente.obrigatorio}")
     private Cliente cliente;
 
     @Column(nullable = false, name = "DATA_PEDIDO")
-    @NotNull(message = "O campo de data precisa ser preenchido!")
-    @FutureOrPresent(message = "A data inserida precisa ser a data atual")
+    @NotNull(message = "{campo.data.obrigatorio}")
+    @FutureOrPresent(message = "{campo.data.invalida}")
     private LocalDate data_pedido;
 
     @Column(nullable = false, name = "TOTAL", precision = 20, scale = 2)
-    @NotNull(message = "O valor total precisa ser preenchido!")
+    @NotNull(message = "{campo.total-pedido.obrigatorio}")
     @Digits(integer = 20, fraction = 2)
     private BigDecimal total;
 
     @OneToMany(mappedBy = "pedido")
-    @NotEmptyList(message = "A lista de itens não pode ser nula")
+    @NotEmptyList(message = "{campo.itens-pedido.obrigatorio}")
     private List<ItemPedido> itensPedidos;
 
     @Override
