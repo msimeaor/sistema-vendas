@@ -1,11 +1,11 @@
 package io.github.msimeaor.domain.entily;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.github.msimeaor.validation.NotEmptyList;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,6 +42,7 @@ public class Pedido {
     private BigDecimal total;
 
     @OneToMany(mappedBy = "pedido")
+    @NotEmptyList(message = "A lista de itens não pode ser nula")
     private List<ItemPedido> itensPedidos;
 
     @Override
