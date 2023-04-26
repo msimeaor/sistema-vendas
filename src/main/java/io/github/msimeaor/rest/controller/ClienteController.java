@@ -44,7 +44,7 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.OK).body(clienteServiceImpl.save(cliente));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable UUID id) {
         Optional<Cliente> clienteOptional = clienteServiceImpl.findById(id);
         if(verificarSeClienteExiste(clienteOptional)) {
@@ -54,7 +54,7 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado!");
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable UUID id, @RequestBody @Valid ClienteDto clienteDto) {
         Optional<Cliente> clienteOptional = clienteServiceImpl.findById(id);
         if (clienteOptional.isPresent()) {

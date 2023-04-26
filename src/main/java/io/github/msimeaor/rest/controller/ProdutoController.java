@@ -60,7 +60,7 @@ public class ProdutoController {
     return ResponseEntity.status(HttpStatus.OK).body(listaProdutos);
   }
 
-  @DeleteMapping("/delete/{id}")
+  @DeleteMapping("/{id}")
   public ResponseEntity<Object> deleteById(@PathVariable UUID id) {
     Optional<Produto> produtoOptional = buscarProdutoPorId(id);
     if (produtoOptional.isPresent()) {
