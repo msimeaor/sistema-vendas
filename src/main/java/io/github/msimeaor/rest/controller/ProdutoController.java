@@ -18,7 +18,6 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/produto")
 public class ProdutoController {
 
