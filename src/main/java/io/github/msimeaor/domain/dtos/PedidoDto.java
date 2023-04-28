@@ -1,7 +1,7 @@
 package io.github.msimeaor.domain.dtos;
 
 import io.github.msimeaor.validation.NotEmptyList;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 

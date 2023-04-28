@@ -3,7 +3,7 @@ package io.github.msimeaor.domain.service.impl;
 import io.github.msimeaor.domain.entily.Produto;
 import io.github.msimeaor.domain.repository.Produtos;
 import io.github.msimeaor.domain.service.ProdutoService;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;

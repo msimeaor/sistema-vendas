@@ -7,7 +7,7 @@ import io.github.msimeaor.domain.entily.ItemPedido;
 import io.github.msimeaor.domain.entily.Pedido;
 import io.github.msimeaor.domain.service.impl.PedidoServiceImpl;
 import io.github.msimeaor.exceptions.ExceptionPersonalizada;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
