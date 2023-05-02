@@ -12,10 +12,10 @@ import java.math.BigDecimal;
 @Setter
 public class ProdutoDto {
 
-  @NotEmpty(message = "O campo descrição é obrigatório!")
+  @NotEmpty(message = "{campo.descricao.obrigatorio}")
   private String descricao;
 
-  @NotNull(message = "O campo preço é obrigatório!")
+  @NotNull(message = "{campo.preco.obrigatorio}")
   @Digits(integer = 20, fraction = 2)
   private BigDecimal preco;
 
