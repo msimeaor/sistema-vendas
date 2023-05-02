@@ -2,10 +2,10 @@ package io.github.msimeaor.domain.entily;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.msimeaor.validation.NotEmptyList;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 

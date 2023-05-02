@@ -3,7 +3,7 @@ package io.github.msimeaor.rest.controller;
 import io.github.msimeaor.domain.dtos.ProdutoDto;
 import io.github.msimeaor.domain.entily.Produto;
 import io.github.msimeaor.domain.service.impl.ProdutoServiceImpl;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Example;

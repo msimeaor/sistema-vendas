@@ -12,7 +12,7 @@ import io.github.msimeaor.domain.repository.Pedidos;
 import io.github.msimeaor.domain.repository.Produtos;
 import io.github.msimeaor.domain.service.PedidoService;
 import io.github.msimeaor.exceptions.ExceptionPersonalizada;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
