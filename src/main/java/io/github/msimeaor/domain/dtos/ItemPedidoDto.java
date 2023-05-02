@@ -10,10 +10,10 @@ import java.util.UUID;
 @Setter
 public class ItemPedidoDto {
 
-  @NotNull(message = "O campo produto é obrigatório!")
+  @NotNull(message = "{campo.codigo-produto.obrigatorio}")
   private UUID produto;
 
-  @NotNull(message = "O campo quantidade é obrigatório!")
+  @NotNull(message = "{campo.quantidade-itens.obrigatorio}")
   private Integer quantidade;
 
 }

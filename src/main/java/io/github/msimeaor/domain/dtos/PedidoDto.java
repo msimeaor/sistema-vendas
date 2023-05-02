@@ -12,10 +12,10 @@ import java.util.UUID;
 @Setter
 public class PedidoDto {
 
-  @NotNull(message = "O campo cliente é obrigatório!")
+  @NotNull(message = "{campo.codigo-cliente.obrigatorio}")
   private UUID cliente;
 
-  @NotEmptyList(message = "A lista de itens não pode ser nula")
+  @NotEmptyList(message = "{campo.itens-pedido.obrigatorio}")
   private List<ItemPedidoDto> itensPedidos;
 
 }
