@@ -1,5 +1,8 @@
 package io.github.msimeaor.domain.service.impl;
 
+import io.github.msimeaor.domain.repository.Usuarios;
+import io.github.msimeaor.domain.service.UsuarioService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,11 +11,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
-public class UsuarioServiceImpl implements UserDetailsService {
+public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
 
-  @Autowired
-  private PasswordEncoder passwordEncoder;
+  private final PasswordEncoder passwordEncoder;
+  private final Usuarios usuarios;
+
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
