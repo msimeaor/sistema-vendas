@@ -1,5 +1,7 @@
 package io.github.msimeaor.config;
 
+import io.github.msimeaor.domain.service.impl.UsuarioServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,13 +18,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     return new BCryptPasswordEncoder();
   }
 
+  @Autowired
+  private UsuarioServiceImpl usuarioService;
+
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.inMemoryAuthentication()
-      .passwordEncoder(passwordEncoder())
-      .withUser("FULANO")
-      .password(passwordEncoder().encode("123"))
-      .roles("USER");
+    auth
+      .userDetailsService(usuarioService)
+      .passwordEncoder(passwordEncoder());
   }
 
   @Override
@@ -32,8 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .authorizeRequests()
           .antMatchers("/cliente/**")
             .hasAnyRole("USER", "ADMIN")
+
           .antMatchers("/produto/**")
             .hasRole("ADMIN")
+
           .antMatchers("/pedido/**")
             .hasAnyRole("USER", "ADMIN")
       .and()
