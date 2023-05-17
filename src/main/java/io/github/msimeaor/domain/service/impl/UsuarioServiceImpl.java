@@ -4,7 +4,6 @@ import io.github.msimeaor.domain.entily.Usuario;
 import io.github.msimeaor.domain.repository.Usuarios;
 import io.github.msimeaor.domain.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import javax.transaction.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -20,7 +19,6 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
 
   private final PasswordEncoder passwordEncoder;
   private final Usuarios usuarios;
-
 
   @Override
   public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
@@ -31,9 +29,20 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
 
     return User.builder()
       .username(usuario.getLogin())
-      .password(passwordEncoder.encode(usuario.getSenha()))
+      .password(usuario.getSenha())
       .roles(roles)
       .build();
   }
+
+  public boolean existsByLogin(String login) {
+    return usuarios.existsByLogin(login);
+  }
+
+  @Transactional
+  public Usuario save(Usuario usuario) {
+    return usuarios.save(usuario);
+  }
+
+
 
 }
