@@ -3,6 +3,7 @@ package io.github.msimeaor.domain.service.impl;
 import io.github.msimeaor.domain.entily.Usuario;
 import io.github.msimeaor.domain.repository.Usuarios;
 import io.github.msimeaor.domain.service.UsuarioService;
+import io.github.msimeaor.exceptions.SenhaInvalidaException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,6 +44,16 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
     return usuarios.save(usuario);
   }
 
+  public UserDetails autenticar(Usuario usuario) {
+    UserDetails user = loadUserByUsername(usuario.getLogin());
+    boolean senhaIgual = passwordEncoder.matches(usuario.getSenha(), user.getPassword());
 
+    if (senhaIgual) {
+      return user;
+    }
+
+    throw new SenhaInvalidaException();
+
+  }
 
 }
