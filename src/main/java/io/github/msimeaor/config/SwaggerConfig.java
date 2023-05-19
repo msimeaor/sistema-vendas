@@ -28,10 +28,10 @@ public class SwaggerConfig {
 
   private ApiInfo apiInfo() {
     return new ApiInfoBuilder()
-      .title("Vendas API")
-      .description("API controle de vendas")
+      .title("Sistema Vendas")
       .version("1.0.0")
       .contact(contact())
+      .description("Sistema para controle de vendas e estoque")
       .build();
   }
 
